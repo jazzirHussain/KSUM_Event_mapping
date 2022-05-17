@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
                 openNewActivity();
             }
         });
+
+
     }
     public void openNewActivity(){
         Intent intent = new Intent(this, EventActivity.class);
@@ -53,4 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
