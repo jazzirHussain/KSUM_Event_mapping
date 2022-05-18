@@ -32,6 +32,11 @@ public class DatabaseHelper extends SQLiteOpenHelper
     private static final String CREATE_TABLE_ROOM = "CREATE TABLE IF NOT EXISTS " + table_name2 + "(" +  room_no + "INTEGER NOT NULL UNIQUE," +  room_id + " VARCHAR(40) PRIMARY KEY," + building_no + " INT NOT NULL, FOREIGN KEY (" + building_no + ") REFERENCES BUILDING(" + building_no + "));";
     private static final String CREATE_TABLE_BUILDING = "CREATE TABLE IF NOT EXISTS " + table_name3 + "(" + building_no + " INTEGER PRIMARY KEY," + building_name + " VARCHAR(20));";
 
+    private static final String DROP_TABLE_EVENT = "DROP TABLE IF EXISTS " + table_name1 + ";";
+    private static final String DROP_TABLE_ROOM = "DROP TABLE IF EXISTS " + table_name2 +  ";";
+    private static final String DROP_TABLE_BUILDING = "DROP TABLE IF EXISTS " + table_name3 + ";";
+    
+
     public static final String insert1_event = "INSERT INTO " + table_name1 +  " VALUES (1,'Cyclothon','2022-05-22 06:00:00', 'free' , 'Main Entrance' , 'This years Kerala Innovation Week will kick off with a 25 km Cyclothon, Starting from KTIZ and passing through Infopark and returning back.This year kerala innovation will kick off ', 111),(2,'Youth Leadership Summit', '2022-05-22 10:00:00', 'Paid','Amphitheatre','no desc',222),(3,'Codeathon','2022-05-23 10:00:00','Free','Amphitheatre','Wanna bring out that coding geek in you? Wanna dive deep into world of codes and logic?Then lets make an early shot for it with CODE-A-THON, a one day workshop exclusively for Age Group of 10-18 years,jointly hosted by Kerala Innovation Week and KODERFIN.',333),(4,'Makeathon','2022-05-23 15:00:00' , 'Free' , 'Conference Hall','No desc',444 ); ";
     public static final String insert2_event = "INSERT INTO " + table_name1 +  " VALUES (5, 'Robotics Workshop' ,'2022-05-24 06:00:00' ,'Free','Conference Hall', 'Kerala Innovation Week along with Inker Robotics is here with an exciting Workshop on Robotics, a 1- day event to mould your technical skills and unleash your creative spirits. ', 555),(6,'Designathon', '2022-05-24 14:00:00', 'Invite Only' , 'Amphitheatre' , 'Kerala Innovation Week in partnership with Canva-the one-stop for all our design needs brings to you Design-A-Thon, a 24 Hour Theme-based Design Challenge using Canva. For the First Time in India in partnership with Canva,we bring forth to you Design-A-Thon.' ,666), (7,'Buildathon' , '2022-05-25 14:00:00' , 'Invite Only' , 'Amphitheatre' , 'Kerala Innovation Week in association with Gtech uLearn is organising an exciting 24-Hour Offline Hackathon: Build-A-Thon, Design.Build.Ship. Build-A-Thon is all about the pure joy of creating. With two verticals, Design & Maker, anyone who is interested in design / hardware / software are welcome to participate. ', 777); " ;
     public static final String insert3_event = "INSERT INTO " + table_name1 +  " VALUES (8 , 'Why Hack - Women' , '2022-05-25 09:00:00' , 'Invite Only' , 'Conference Hall' , 'Kerala Innovation Week along with EY brings to you whyHack - a nerve wracking Hackthon exclusively for Women ' , 888), (9 , 'Investor Cafe' , '2022-05-25 10:00:00' , 'Invite Only' , 'Conference Room' , 'no desc' , 999) , (10, 'Mentor Clinic - Office Hours' , '2022-05-25 12:00:00' , 'Invite Only' , 'Meeting Room' , 'no desc' , 000), (11 , 'Pitch Fest' , '2022-05-26 10:00:00' , 'Invite Only' , 'Conference Room' , 'Kerala Startup Mission presents the best oppurtunity for startups looking to raise funds. Pitch your ideas before an Investor Panela nd stand a chance to be funded at the Kerala innovation week.' , 1111) , (12, 'Buildathon : Day-2' , '2022-05-26 15:00:00' , 'Free' , 'Amphitheatre' , 'no decs' , 2222), (13 , 'Why Hack: Day-2' , '2022-05-26 15:00:00' , 'Free' , 'Conference Hall' , 'Kerala Innovation Week along with EY brings to you whyHack - a nerve wracking Hackathon exclusively for Women ' , 3333), (14 , 'SHE Power Summit' , '2022-05-27 14:00:00' , 'Free', 'Amphitheatre' , 'no desc' , 4444); ";
@@ -65,8 +70,12 @@ public class DatabaseHelper extends SQLiteOpenHelper
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) 
+    {
+       db.execSQL(DROP_TABLE_EVENT);
+       db.execSQL(CREATE_TABLE_ROOM);
+       db.execSQL(CREATE_TABLE_BUILDING);
+       
     }
 }
 
