@@ -10,4 +10,7 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="splashscreen_view">splsh</string>
+    <string name="butt0n">TODO</string>
+    <string name="desc">desc</string>
+    <string name="button_pop">Button</string>
 </resources>
