@@ -73,8 +73,8 @@ public class DatabaseHelper extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) 
     {
        sqLiteDatabase.execSQL(DROP_TABLE_EVENT);
-       sqLiteDatabase.execSQL(CREATE_TABLE_ROOM);
-       sqLiteDatabase.execSQL(CREATE_TABLE_BUILDING);
+       sqLiteDatabase.execSQL(DROP_TABLE_ROOM);
+       sqLiteDatabase.execSQL(DROP_TABLE_BUILDING);
        
     }
 }
