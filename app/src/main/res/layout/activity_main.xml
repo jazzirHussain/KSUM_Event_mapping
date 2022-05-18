@@ -11,6 +11,16 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.KSUMEventMapping.AppBarOverlay">
 
+        <ImageButton
+            android:id="@+id/info"
+            android:layout_width="48dp"
+            android:layout_height="47dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:src="@drawable/search"
+            android:text="Button" />
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"

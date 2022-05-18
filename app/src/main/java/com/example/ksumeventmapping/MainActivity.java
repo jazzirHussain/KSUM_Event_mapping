@@ -1,14 +1,19 @@
 package com.example.ksumeventmapping;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,12 +24,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        SQLiteDatabase db= new DataBaseHelper(MainActivity.this).getWritableDatabase();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openNewActivity();
+            }
+        });
+
+        ImageButton i_but = findViewById(R.id.info);
+        i_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(MainActivity.this);
+                View bottomSheetView = LayoutInflater.from( getApplicationContext ( ))
+                        .inflate(
+                                R.layout.activity_bottomdialog,
+                                (LinearLayout)findViewById(R.id.bottomSheetContainer));
+                bottomSheetDialog.setContentView( bottomSheetView);
+                bottomSheetDialog.show( );
             }
         });
 
