@@ -54,15 +54,15 @@ public class DatabaseHelper extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase)
     {
-       SQLiteDatabase.execSQL(CREATE_TABLE_EVENT);
-       SQLiteDatabase.execSQL(CREATE_TABLE_ROOM);
-       SQLiteDatabase.execSQL(CREATE_TABLE_BUILDING);
-       SQLiteDatabase.execSQL(insert_building);
-       SQLiteDatabase.execSQL(insert_room);
-       SQLiteDatabase.execSQL(insert1_event);
-       SQLiteDatabase.execSQL(insert2_event);
-       SQLiteDatabase.execSQL(insert3_event);
-       SQLiteDatabase.execSQL(insert4_event);
+       sqLiteDatabase.execSQL(CREATE_TABLE_EVENT);
+       sqLiteDatabase.execSQL(CREATE_TABLE_ROOM);
+       sqLiteDatabase.execSQL(CREATE_TABLE_BUILDING);
+       sqLiteDatabase.execSQL(insert_building);
+       sqLiteDatabase.execSQL(insert_room);
+       sqLiteDatabase.execSQL(insert1_event);
+       sqLiteDatabase.execSQL(insert2_event);
+       sqLiteDatabase.execSQL(insert3_event);
+       sqLiteDatabase.execSQL(insert4_event);
 
 
 
@@ -72,9 +72,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) 
     {
-       SQLiteDatabase.execSQL(DROP_TABLE_EVENT);
-       SQLiteDatabase.execSQL(CREATE_TABLE_ROOM);
-       SQLiteDatabase.execSQL(CREATE_TABLE_BUILDING);
+       sqLiteDatabase.execSQL(DROP_TABLE_EVENT);
+       sqLiteDatabase.execSQL(CREATE_TABLE_ROOM);
+       sqLiteDatabase.execSQL(CREATE_TABLE_BUILDING);
        
     }
 }
