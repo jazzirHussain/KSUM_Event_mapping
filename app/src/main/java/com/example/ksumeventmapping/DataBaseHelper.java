@@ -54,15 +54,15 @@ public class DatabaseHelper extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase)
     {
-       db.execSQL(CREATE_TABLE_EVENT);
-       db.execSQL(CREATE_TABLE_ROOM);
-       db.execSQL(CREATE_TABLE_BUILDING);
-       db.execSQL(insert_building);
-       db.execSQL(insert_room);
-       db.execSQL(insert1_event);
-       db.execSQL(insert2_event);
-       db.execSQL(insert3_event);
-       db.execSQL(insert4_event);
+       SQLiteDatabase.execSQL(CREATE_TABLE_EVENT);
+       SQLiteDatabase.execSQL(CREATE_TABLE_ROOM);
+       SQLiteDatabase.execSQL(CREATE_TABLE_BUILDING);
+       SQLiteDatabase.execSQL(insert_building);
+       SQLiteDatabase.execSQL(insert_room);
+       SQLiteDatabase.execSQL(insert1_event);
+       SQLiteDatabase.execSQL(insert2_event);
+       SQLiteDatabase.execSQL(insert3_event);
+       SQLiteDatabase.execSQL(insert4_event);
 
 
 
@@ -72,9 +72,9 @@ public class DatabaseHelper extends SQLiteOpenHelper
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) 
     {
-       db.execSQL(DROP_TABLE_EVENT);
-       db.execSQL(CREATE_TABLE_ROOM);
-       db.execSQL(CREATE_TABLE_BUILDING);
+       SQLiteDatabase.execSQL(DROP_TABLE_EVENT);
+       SQLiteDatabase.execSQL(CREATE_TABLE_ROOM);
+       SQLiteDatabase.execSQL(CREATE_TABLE_BUILDING);
        
     }
 }
