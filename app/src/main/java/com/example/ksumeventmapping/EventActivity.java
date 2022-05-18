@@ -9,11 +9,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EventActivity extends AppCompatActivity {
     SearchView searchView;
     ListView listView;
-    ArrayList<String> list;
+    List<String> list;
     ArrayAdapter<String > adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,7 @@ public class EventActivity extends AppCompatActivity {
         searchView = (SearchView) findViewById(R.id.searchView);
         listView = (ListView) findViewById(R.id.lv1);
 
-        list = new ArrayList<>();
+        list = new ArrayList<String>();
         list.add("Apple");
         list.add("Banana");
         list.add("Pineapple");
@@ -35,13 +36,16 @@ public class EventActivity extends AppCompatActivity {
         list.add("Watermelon");
         list.add("Papaya");
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
+//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
+        CustomListAdapter adapter = new CustomListAdapter(this, list);
         listView.setAdapter(adapter);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
+                if(query.equals("")){
+                    adapter.getFilter().filter("");
+                }
                 if(!checkList(list, query).equals("")){
                     adapter.getFilter().filter(query);
                 }else{
@@ -52,6 +56,9 @@ public class EventActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String query) {
+                if(query.equals("")){
+                    adapter.getFilter().filter("");
+                }
                 if(!checkList(list, query).equals("")){
                     adapter.getFilter().filter(query);
                 }
@@ -62,13 +69,13 @@ public class EventActivity extends AppCompatActivity {
 
             @Override
             public boolean onClose() {
-                adapter.getFilter().filter("");
+                adapter.checkList(list,"");
                 return true;
             }
         });
 
     }
-    public String checkList(ArrayList<String> list, String query){
+    public String checkList(List<String> list, String query){
         for (int i = 0; i < list.size(); i++){
             if(list.get(i).toLowerCase().equals(query.toLowerCase())){
                 return list.get(i);
