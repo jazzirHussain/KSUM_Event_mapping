@@ -35,10 +35,10 @@
         android:layout_marginStart="239dp"
         android:layout_marginTop="90dp"
         android:src="@drawable/icons8_location_64"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone" />
+        tools:visibility="invisible" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -47,10 +47,9 @@
         android:layout_marginStart="250dp"
         android:layout_marginTop="186dp"
         android:src="@drawable/icons8_location_64"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView5"
