@@ -6,11 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class SecondFragment extends Fragment {
 
@@ -38,7 +43,36 @@ public class SecondFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ImageView i_but = (ImageView) view.findViewById(R.id.fragm);
+        i_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CourseModal data =getActivity().getIntent().getParcelableExtra("eventData");
+                if(getActivity().getIntent().hasExtra("eventData")){
 
+                    final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity().getApplicationContext());
+                    View bottomSheetView = LayoutInflater.from( getActivity().getApplicationContext ( ))
+                            .inflate(
+                                    R.layout.activity_bottomdialog,
+                                    (LinearLayout)view.findViewById(R.id.bottomSheetContainer));
+                    bottomSheetDialog.setContentView( bottomSheetView);
+                    bottomSheetDialog.show( );
+                    TextView name,desc,time,room;
+                    name = bottomSheetDialog.findViewById(R.id.textView2);
+                    desc = bottomSheetDialog.findViewById(R.id.textView3);
+                    time = bottomSheetDialog.findViewById(R.id.textView4);
+                    room = bottomSheetDialog.findViewById(R.id.textView5);
+                    CharSequence c = "sdds";
+                    name.setText(data.getName());
+                    desc.setText(data.getDesc());
+                    time.setText(data.getTime());
+                    room.setText(data.getRoom());
+                }else{
+                    Toast toast=Toast.makeText(getActivity().getApplicationContext(),"Select an Event",Toast.LENGTH_SHORT);
+                }
+            }
+        }
+        );
         view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
