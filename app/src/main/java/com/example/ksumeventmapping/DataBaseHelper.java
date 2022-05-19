@@ -2,12 +2,15 @@ package com.example.ksumeventmapping;
 
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+
 public class DataBaseHelper extends SQLiteOpenHelper
 {
 
@@ -92,5 +95,34 @@ public class DataBaseHelper extends SQLiteOpenHelper
         sqLiteDatabase.execSQL(DROP_TABLE_ROOM);
         sqLiteDatabase.execSQL(DROP_TABLE_BUILDING);
         onCreate(sqLiteDatabase);
+    }
+
+    public ArrayList<CourseModal> convertToCourse(Cursor cursorCourses){
+        ArrayList<CourseModal> courseModalArrayList = new ArrayList<>();
+        if (cursorCourses.moveToFirst()) {
+            do {
+                // on below line we are adding the data from cursor to our array list.
+                courseModalArrayList.add(new CourseModal(cursorCourses.getString(1),
+                        cursorCourses.getString(5),
+                        cursorCourses.getString(2),
+                        cursorCourses.getString(4)));
+            } while (cursorCourses.moveToNext());
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        cursorCourses.close();
+        return courseModalArrayList;
+    }
+
+    public ArrayList<CourseModal> getEventData(String name){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursorCourses = db.rawQuery("SELECT * FROM "+table_name1+" WHERE "+event_name+" = ?;",new String[] {name});
+        return convertToCourse(cursorCourses);
+    }
+    public ArrayList<CourseModal> getAllEventData(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursorCourses = db.rawQuery("SELECT * FROM "+table_name1+";",null);
+        return convertToCourse(cursorCourses);
     }
 }

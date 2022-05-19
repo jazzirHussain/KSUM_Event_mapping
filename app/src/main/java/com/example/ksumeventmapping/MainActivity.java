@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,7 +18,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class MainActivity extends AppCompatActivity implements Serializable {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +28,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
-        SQLiteDatabase db= new DataBaseHelper(MainActivity.this).getWritableDatabase();
+        DataBaseHelper dbHelper = new DataBaseHelper(MainActivity.this);
+        SQLiteDatabase db= dbHelper.getWritableDatabase();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openNewActivity();
+                openNewActivity(dbHelper);
             }
         });
 
@@ -37,19 +42,36 @@ public class MainActivity extends AppCompatActivity {
         i_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(MainActivity.this);
-                View bottomSheetView = LayoutInflater.from( getApplicationContext ( ))
-                        .inflate(
-                                R.layout.activity_bottomdialog,
-                                (LinearLayout)findViewById(R.id.bottomSheetContainer));
-                bottomSheetDialog.setContentView( bottomSheetView);
-                bottomSheetDialog.show( );
+                CourseModal data = getIntent().getParcelableExtra("eventData");
+                if(getIntent().hasExtra("eventData")){
+
+                    final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(MainActivity.this);
+                    View bottomSheetView = LayoutInflater.from( getApplicationContext ( ))
+                            .inflate(
+                                    R.layout.activity_bottomdialog,
+                                    (LinearLayout)findViewById(R.id.bottomSheetContainer));
+                    bottomSheetDialog.setContentView( bottomSheetView);
+                    bottomSheetDialog.show( );
+
+                    TextView name,desc,time,room;
+                    name = bottomSheetDialog.findViewById(R.id.textView2);
+                    desc = bottomSheetDialog.findViewById(R.id.textView3);
+                    time = bottomSheetDialog.findViewById(R.id.textView4);
+                    room = bottomSheetDialog.findViewById(R.id.textView5);
+                    CharSequence c = "sdds";
+                    name.setText(data.getName());
+                    desc.setText(data.getDesc());
+                    time.setText(data.getTime());
+                    room.setText(data.getRoom());
+                }else{
+                    Toast toast=Toast.makeText(getApplicationContext(),"Select an Event",Toast.LENGTH_SHORT);
+                }
             }
         });
 
 
     }
-    public void openNewActivity(){
+    public void openNewActivity(DataBaseHelper db){
         Intent intent = new Intent(this, EventActivity.class);
         startActivity(intent);
     }
