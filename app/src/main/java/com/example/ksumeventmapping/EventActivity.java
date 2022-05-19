@@ -2,7 +2,6 @@ package com.example.ksumeventmapping;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,7 +30,7 @@ public class EventActivity extends AppCompatActivity {
         list = new ArrayList<String>();
         ArrayList<CourseModal> allEvents = db.getAllEventData();
         for(int i=0;i<allEvents.size();i++){
-            list.add(allEvents.get(i).getCourseName());
+            list.add(allEvents.get(i).getName());
         }
 
 //        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
@@ -79,7 +78,8 @@ public class EventActivity extends AppCompatActivity {
 
                 String item = adapter.getItem(position);
                 ArrayList<CourseModal> data =  db.getEventData(item);
-                Log.d("data",data.get(0).getCourseName());
+                intent.putExtra("eventData",data.get(0));
+
                 startActivity(intent);
             }
         });

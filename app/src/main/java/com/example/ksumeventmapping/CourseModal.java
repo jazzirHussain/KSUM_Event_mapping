@@ -1,46 +1,71 @@
 package com.example.ksumeventmapping;
 
-public class CourseModal {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class CourseModal implements Parcelable {
+    private String name;
+    private String desc;
+    private String time;
+    private String room;
+    private int id;
+
 
     // variables for our coursename,
     // description, tracks and duration, id.
-    private String courseName;
-    private String courseDuration;
-    private String courseTracks;
-    private String courseDescription;
-    private int id;
+
+
+    protected CourseModal(Parcel in) {
+        name = in.readString();
+        desc = in.readString();
+        time = in.readString();
+        room = in.readString();
+        id = in.readInt();
+    }
+
+    public static final Creator<CourseModal> CREATOR = new Creator<CourseModal>() {
+        @Override
+        public CourseModal createFromParcel(Parcel in) {
+            return new CourseModal(in);
+        }
+
+        @Override
+        public CourseModal[] newArray(int size) {
+            return new CourseModal[size];
+        }
+    };
 
     // creating getter and setter methods
-    public String getCourseName() {
-        return courseName;
+    public String getName() {
+        return name;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setCourseName(String name) {
+        this.name = name;
     }
 
-    public String getCourseDuration() {
-        return courseDuration;
+    public String getDesc() {
+        return desc;
     }
 
     public void setCourseDuration(String courseDuration) {
-        this.courseDuration = courseDuration;
+        this.desc = courseDuration;
     }
 
-    public String getCourseTracks() {
-        return courseTracks;
+    public String getTime() {
+        return time;
     }
 
-    public void setCourseTracks(String courseTracks) {
-        this.courseTracks = courseTracks;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public String getCourseDescription() {
-        return courseDescription;
+    public String getRoom() {
+        return room;
     }
 
-    public void setCourseDescription(String courseDescription) {
-        this.courseDescription = courseDescription;
+    public void setRoom(String room) {
+        this.room = room;
     }
 
     public int getId() {
@@ -52,10 +77,24 @@ public class CourseModal {
     }
 
     // constructor
-    public CourseModal(String courseName, String courseDuration, String courseTracks, String courseDescription) {
-        this.courseName = courseName;
-        this.courseDuration = courseDuration;
-        this.courseTracks = courseTracks;
-        this.courseDescription = courseDescription;
+    public CourseModal(String name, String courseDuration, String time, String room) {
+        this.name = name;
+        this.desc = courseDuration;
+        this.time = time;
+        this.room = room;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(desc);
+        dest.writeString(time);
+        dest.writeString(room);
+        dest.writeInt(id);
     }
 }
