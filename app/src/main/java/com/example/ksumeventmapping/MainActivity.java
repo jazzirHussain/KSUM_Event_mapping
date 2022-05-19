@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             }
         });
 
-        ImageButton i_but = findViewById(R.id.info);
+        ImageView i_but = (ImageView) findViewById(R.id.fragm);
         i_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
