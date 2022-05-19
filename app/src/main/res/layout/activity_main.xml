@@ -13,20 +13,16 @@
 
         <ImageButton
             android:id="@+id/info"
+            style="@android:style/Widget.Holo.ImageButton"
             android:layout_width="48dp"
-            android:layout_height="47dp"
+            android:layout_height="48dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
             android:src="@drawable/search"
-            android:text="Button" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.KSUMEventMapping.PopupOverlay" />
+            android:text="Button"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:src="@color/blue" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -38,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@android:drawable/ic_dialog_email"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         DataBaseHelper dbHelper = new DataBaseHelper(MainActivity.this);
         SQLiteDatabase db= dbHelper.getWritableDatabase();
         FloatingActionButton fab = findViewById(R.id.fab);
