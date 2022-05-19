@@ -51,7 +51,6 @@ class CustomListAdapter extends BaseAdapter implements Filterable {
         final TextView noteTitle= (TextView)view.findViewById(R.id.note_title);
         noteTitle.setText(mList.get(position));
 
-
         return view;
     }
     public String checkList(List<String> list, String query){

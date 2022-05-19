@@ -1,6 +1,10 @@
 package com.example.ksumeventmapping;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -20,21 +24,15 @@ public class EventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
-
+        DataBaseHelper db = new DataBaseHelper(EventActivity.this);
         searchView = (SearchView) findViewById(R.id.searchView);
         listView = (ListView) findViewById(R.id.lv1);
 
         list = new ArrayList<String>();
-        list.add("Apple");
-        list.add("Banana");
-        list.add("Pineapple");
-        list.add("Orange");
-        list.add("Lychee");
-        list.add("Gavava");
-        list.add("Peech");
-        list.add("Melon");
-        list.add("Watermelon");
-        list.add("Papaya");
+        ArrayList<CourseModal> allEvents = db.getAllEventData();
+        for(int i=0;i<allEvents.size();i++){
+            list.add(allEvents.get(i).getCourseName());
+        }
 
 //        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,list);
         CustomListAdapter adapter = new CustomListAdapter(this, list);
@@ -71,6 +69,18 @@ public class EventActivity extends AppCompatActivity {
             public boolean onClose() {
                 adapter.checkList(list,"");
                 return true;
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(EventActivity.this,MainActivity.class);
+
+                String item = adapter.getItem(position);
+                ArrayList<CourseModal> data =  db.getEventData(item);
+                Log.d("data",data.get(0).getCourseName());
+                startActivity(intent);
             }
         });
 

@@ -16,7 +16,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class MainActivity extends AppCompatActivity implements Serializable {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +26,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        SQLiteDatabase db= new DataBaseHelper(MainActivity.this).getWritableDatabase();
+        DataBaseHelper dbHelper = new DataBaseHelper(MainActivity.this);
+        SQLiteDatabase db= dbHelper.getWritableDatabase();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openNewActivity();
+                openNewActivity(dbHelper);
             }
         });
 
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void openNewActivity(){
+    public void openNewActivity(DataBaseHelper db){
         Intent intent = new Intent(this, EventActivity.class);
         startActivity(intent);
     }
