@@ -1,6 +1,5 @@
 package com.example.ksumeventmapping;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -50,8 +48,8 @@ public class SecondFragment extends Fragment {
                 CourseModal data =getActivity().getIntent().getParcelableExtra("eventData");
                 if(getActivity().getIntent().hasExtra("eventData")){
 
-                    final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity().getApplicationContext());
-                    View bottomSheetView = LayoutInflater.from( getActivity().getApplicationContext ( ))
+                    final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
+                    View bottomSheetView = LayoutInflater.from(getActivity().getApplicationContext())
                             .inflate(
                                     R.layout.activity_bottomdialog,
                                     (LinearLayout)view.findViewById(R.id.bottomSheetContainer));
