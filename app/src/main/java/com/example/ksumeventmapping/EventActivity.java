@@ -74,13 +74,14 @@ public class EventActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(EventActivity.this,MainActivity.class);
+                Intent intent = new Intent(EventActivity.this,MainActivity .class);
 
                 String item = adapter.getItem(position);
                 ArrayList<CourseModal> data =  db.getEventData(item);
                 intent.putExtra("eventData",data.get(0));
 
                 startActivity(intent);
+                finish();
             }
         });
 

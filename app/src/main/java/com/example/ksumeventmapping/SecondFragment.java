@@ -1,7 +1,9 @@
 package com.example.ksumeventmapping;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -25,26 +27,23 @@ public class SecondFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        int i=1;
-        if(i==1){
-            View view = inflater.inflate(R.layout.fragment_second,container,false);
-            imageView = (ImageView) view.findViewById(R.id.imageView3);
-            imageView.setVisibility(View.VISIBLE);
-            imageView2 = (ImageView) view.findViewById(R.id.imageView2);
-            imageView2.setVisibility(View.VISIBLE);
-
-        }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_second, container, false);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        CourseModal data =getActivity().getIntent().getParcelableExtra("eventData");
         ImageView i_but = (ImageView) view.findViewById(R.id.fragm);
+        ImageView img;
+        img = view.findViewById(R.id.fragMap);
+        String src = convertToFormat(data.getRoom());
+        int drawableId = getActivity().getResources().getIdentifier(src, "drawable", getActivity().getApplicationContext().getPackageName());
+        img.setImageResource(drawableId);
         i_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CourseModal data =getActivity().getIntent().getParcelableExtra("eventData");
+
                 if(getActivity().getIntent().hasExtra("eventData")){
 
                     final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
@@ -71,5 +70,27 @@ public class SecondFragment extends Fragment {
         }
         );
 
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+                    Log.d("point","x :"+x);
+                    Log.d("point","y :"+y);
+                }
+                return false;
+            }
+        });
+
+
+
+
+    }
+    public String convertToFormat(String src){
+        src = src.toLowerCase();
+        src = src.replaceAll("\\s","_");
+        Log.d("src: ",src);
+        return src;
     }
 }

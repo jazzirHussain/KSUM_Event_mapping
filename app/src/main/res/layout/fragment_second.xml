@@ -8,63 +8,18 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/fragMap"
         android:layout_width="582dp"
         android:layout_height="881dp"
         android:layout_marginEnd="30dp"
-        android:src="@drawable/samplemap"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="37dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="239dp"
-        android:layout_marginTop="90dp"
-        android:src="@drawable/icons8_location_64"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="invisible" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="42dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="186dp"
-        android:src="@drawable/icons8_location_64"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="53dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="288dp"
-        android:src="@drawable/icons8_location_64"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="52dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="143dp"
-        android:layout_marginTop="224dp"
-        android:src="@drawable/icons8_location_64"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone" />
 
     <ImageView
         android:id="@+id/fragm"
