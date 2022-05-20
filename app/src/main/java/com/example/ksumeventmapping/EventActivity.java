@@ -87,7 +87,7 @@ public class EventActivity extends AppCompatActivity {
     }
     public String checkList(List<String> list, String query){
         for (int i = 0; i < list.size(); i++){
-            if(list.get(i).toLowerCase().equals(query.toLowerCase())){
+            if(list.get(i).toLowerCase().contains(query.toLowerCase())){
                 return list.get(i);
             }
         }
