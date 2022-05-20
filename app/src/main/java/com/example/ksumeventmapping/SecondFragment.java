@@ -34,10 +34,13 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         CourseModal data =getActivity().getIntent().getParcelableExtra("eventData");
-        ImageView i_but = (ImageView) view.findViewById(R.id.fragm);
+        String src = convertToFormat(data.getRoom());
+        int markerId = getActivity().getResources().getIdentifier(src, "id", getActivity().getApplicationContext().getPackageName());
+        ImageView i_but = (ImageView) view.findViewById(markerId);
+        i_but.setVisibility(View.VISIBLE);
         ImageView img;
         img = view.findViewById(R.id.fragMap);
-        String src = convertToFormat(data.getRoom());
+
         int drawableId = getActivity().getResources().getIdentifier(src, "drawable", getActivity().getApplicationContext().getPackageName());
         img.setImageResource(drawableId);
         i_but.setOnClickListener(new View.OnClickListener() {
