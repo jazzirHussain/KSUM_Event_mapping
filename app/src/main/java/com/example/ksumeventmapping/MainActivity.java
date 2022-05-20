@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,7 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity implements Serializable {
-
+    CourseModal data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public CourseModal getActivityData(){
+        return data;
     }
 
 
