@@ -9,22 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.KSUMEventMapping.AppBarOverlay">
-
-        <ImageButton
-            android:id="@+id/info"
-            style="@android:style/Widget.Holo.ImageButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="5dp"
-            android:src="@drawable/search"
-            android:text="Button"
-            tools:ignore="SpeakableTextPresentCheck"
-            tools:src="@color/blue" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:theme="@style/Theme.KSUMEventMapping.AppBarOverlay"/>
 
     <include layout="@layout/content_main" />
 
