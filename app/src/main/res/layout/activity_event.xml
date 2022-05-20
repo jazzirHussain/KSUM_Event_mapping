@@ -1,44 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".EventActivity"
-    android:background="@color/cream">
+    tools:context=".EventActivity">
 
-    <ListView
-        android:id="@+id/lv1"
-        android:layout_width="wrap_content"
-        android:layout_height="671dp"
-        android:layout_below="@id/searchView"
-        android:layout_marginTop="18dp"
-        android:divider="@color/cream"
-        android:dividerHeight="20dp"
-        android:background="@color/cream"/>
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="388dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
-        android:background="@drawable/search_bg"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search Here"/>
-
-    <TextView
-        android:id="@+id/textView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:paddingBottom="20dp"
-        android:text="Select Event"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent" />
 
-</RelativeLayout>
-
+</LinearLayout>
