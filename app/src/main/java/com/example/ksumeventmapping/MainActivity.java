@@ -3,19 +3,12 @@ package com.example.ksumeventmapping;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
@@ -43,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     public void openNewActivity(DataBaseHelper db){
         Intent intent = new Intent(this, EventActivity.class);
         startActivity(intent);
+        if(getIntent().hasExtra("eventData")){
+            finish();
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

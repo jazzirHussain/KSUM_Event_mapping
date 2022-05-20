@@ -2,7 +2,6 @@ package com.example.ksumeventmapping;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -103,7 +102,6 @@ class CustomListAdapter extends BaseAdapter implements Filterable {
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults)
             {
-                Log.e("sdsd",filterResults.toString());
                 mList = (List<String>) filterResults.values;
                 notifyDataSetChanged();
             }

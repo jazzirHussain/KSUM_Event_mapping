@@ -77,20 +77,21 @@ public class EventActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(EventActivity.this,MainActivity.class);
+                Intent intent = new Intent(EventActivity.this,MainActivity .class);
 
                 String item = adapter.getItem(position);
                 ArrayList<CourseModal> data =  db.getEventData(item);
                 intent.putExtra("eventData",data.get(0));
 
                 startActivity(intent);
+                finish();
             }
         });
 
     }
     public String checkList(List<String> list, String query){
         for (int i = 0; i < list.size(); i++){
-            if(list.get(i).toLowerCase().equals(query.toLowerCase())){
+            if(list.get(i).toLowerCase().contains(query.toLowerCase())){
                 return list.get(i);
             }
         }
