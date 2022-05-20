@@ -8,6 +8,7 @@ public class CourseModal implements Parcelable {
     private String desc;
     private String time;
     private String room;
+    private int building;
     private int id;
 
 
@@ -20,6 +21,7 @@ public class CourseModal implements Parcelable {
         desc = in.readString();
         time = in.readString();
         room = in.readString();
+        building = in.readInt();
         id = in.readInt();
     }
 
@@ -64,6 +66,10 @@ public class CourseModal implements Parcelable {
         return room;
     }
 
+    public int getBuilding() {
+        return building;
+    }
+
     public void setRoom(String room) {
         this.room = room;
     }
@@ -77,11 +83,12 @@ public class CourseModal implements Parcelable {
     }
 
     // constructor
-    public CourseModal(String name, String courseDuration, String time, String room) {
+    public CourseModal(String name, String courseDuration, String time, String room, int building) {
         this.name = name;
         this.desc = courseDuration;
         this.time = time;
         this.room = room;
+        this.building = building;
     }
 
     @Override
@@ -95,6 +102,8 @@ public class CourseModal implements Parcelable {
         dest.writeString(desc);
         dest.writeString(time);
         dest.writeString(room);
+        dest.writeInt(building);
         dest.writeInt(id);
+
     }
 }

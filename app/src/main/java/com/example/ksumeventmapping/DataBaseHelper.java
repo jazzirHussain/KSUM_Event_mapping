@@ -39,10 +39,10 @@ public class DataBaseHelper extends SQLiteOpenHelper
             + event_name +" VARCHAR(50) not null ,"
             + date + " TIMESTAMP NOT NULL , "
             +  fee + " VARCHAR(20) NOT NULL ,"
-            + room_id + " INTEGER ,"
+            + room_id + " VARCHAR(50) ,"
             + desc + " VARCHAR(500),"
             + cor + " INTEGER NOT NULL,"
-            + "FOREIGN KEY("+room_id+") REFERENCES "+table_name2+"(" + room_id + "));";
+            + "FOREIGN KEY("+room_id+") REFERENCES "+table_name2+"(" + room_name + "));";
 //      private static final String CREATE_TABLE_EVENT = "CREATE TABLE IF NOT EXISTS " + table_name1 + "(" + event_id + "INTEGER PRIMARY KEY AUTOINCREMENT ," + event_name +" VARCHAR(50) not null ," + date + " TIMESTAMP NOT NULL , " +  fee + " VARCHAR(20) NOT NULL ," + room_id + "VARCHAR(60) NOT NULL FORIEGN KEY(" + room_id + "), REFERENCES room( " + room_id + " " + desc + " VARCHAR(500)," + cor + " INT NOT NULL );";
 
     private static final String CREATE_TABLE_ROOM = "CREATE TABLE IF NOT EXISTS " + table_name2 + " (" +  room_id + " INTEGER PRIMARY KEY, " +  room_name +" VARCHAR(50) not null, " + building_no + " INTEGER NOT NULL, FOREIGN KEY(" + building_no + ") REFERENCES BUILDING(" + building_no + "));";
@@ -97,6 +97,25 @@ public class DataBaseHelper extends SQLiteOpenHelper
         onCreate(sqLiteDatabase);
     }
 
+    public ArrayList<CourseModal> convertToCourseAll(Cursor cursorCourses){
+        ArrayList<CourseModal> courseModalArrayList = new ArrayList<>();
+        if (cursorCourses.moveToFirst()) {
+            do {
+                // on below line we are adding the data from cursor to our array list.
+                courseModalArrayList.add(new CourseModal(cursorCourses.getString(1),
+                        cursorCourses.getString(5),
+                        cursorCourses.getString(2),
+                        cursorCourses.getString(4),
+                        cursorCourses.getInt(9)
+                ));
+            } while (cursorCourses.moveToNext());
+            // moving our cursor to next.
+        }
+        // at last closing our cursor
+        // and returning our array list.
+        cursorCourses.close();
+        return courseModalArrayList;
+    }
     public ArrayList<CourseModal> convertToCourse(Cursor cursorCourses){
         ArrayList<CourseModal> courseModalArrayList = new ArrayList<>();
         if (cursorCourses.moveToFirst()) {
@@ -105,7 +124,9 @@ public class DataBaseHelper extends SQLiteOpenHelper
                 courseModalArrayList.add(new CourseModal(cursorCourses.getString(1),
                         cursorCourses.getString(5),
                         cursorCourses.getString(2),
-                        cursorCourses.getString(4)));
+                        cursorCourses.getString(4),
+                        1
+                ));
             } while (cursorCourses.moveToNext());
             // moving our cursor to next.
         }
@@ -117,8 +138,8 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
     public ArrayList<CourseModal> getEventData(String name){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursorCourses = db.rawQuery("SELECT * FROM "+table_name1+" WHERE "+event_name+" = ?;",new String[] {name});
-        return convertToCourse(cursorCourses);
+        Cursor cursorCourses = db.rawQuery("SELECT * FROM "+table_name1+","+table_name2+","+table_name3+" WHERE "+event_name+" = ? AND "+table_name1+"."+room_id+" = "+table_name2+"."+room_name+" AND "+table_name2+"."+building_no+" = "+table_name3+"."+building_no+";",new String[] {name});
+        return convertToCourseAll(cursorCourses);
     }
     public ArrayList<CourseModal> getAllEventData(){
         SQLiteDatabase db = this.getReadableDatabase();

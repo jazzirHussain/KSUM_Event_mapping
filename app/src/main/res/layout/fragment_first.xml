@@ -29,7 +29,7 @@
 
 
     <ImageView
-        android:id="@+id/outsideImageView"
+        android:id="@+id/outsideImageView1"
         android:layout_width="63dp"
         android:layout_height="63dp"
         android:src="@drawable/loc"
@@ -38,7 +38,24 @@
         app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52" />
+        app:layout_constraintVertical_bias="0.52"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/outsideImageView2"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:src="@drawable/loc"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.541"
+
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

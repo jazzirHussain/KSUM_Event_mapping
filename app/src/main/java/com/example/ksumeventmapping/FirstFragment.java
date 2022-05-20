@@ -1,6 +1,7 @@
 package com.example.ksumeventmapping;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class FirstFragment extends Fragment {
-    private static ImageView img;
+    private static ImageView img1,img2;
     private int c;
     @Override
     public View onCreateView(
@@ -19,14 +20,30 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_first, container, false);
+
+
+
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        img1 = (ImageView) getView().findViewById(R.id.outsideImageView1);
+        img2 = (ImageView) getView().findViewById(R.id.outsideImageView2);
+        if(getActivity().getIntent().hasExtra("eventData")){
+            MainActivity activity =  (MainActivity) getActivity();
+            CourseModal data = getActivity().getIntent().getParcelableExtra("eventData");
+            Log.d("building","data: "+data.getBuilding());
+            if(data.getBuilding() == 1){
+                img1.setVisibility(View.VISIBLE);
+            }else if(data.getBuilding() == 2){
+                img2.setVisibility(View.VISIBLE);
+            }
 
-        img = (ImageView) getView().findViewById(R.id.outsideImageView);
-        img.setOnClickListener(new View.OnClickListener() {
+        }
+
+        img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavHostFragment.findNavController(FirstFragment.this)
