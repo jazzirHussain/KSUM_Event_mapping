@@ -73,18 +73,6 @@ public class SecondFragment extends Fragment {
         }
         );
 
-        view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN){
-                    int x = (int) event.getX();
-                    int y = (int) event.getY();
-                    Log.d("point","x :"+x);
-                    Log.d("point","y :"+y);
-                }
-                return false;
-            }
-        });
 
 
 
@@ -95,5 +83,6 @@ public class SecondFragment extends Fragment {
         src = src.replaceAll("\\s","_");
         Log.d("src: ",src);
         return src;
+
     }
 }

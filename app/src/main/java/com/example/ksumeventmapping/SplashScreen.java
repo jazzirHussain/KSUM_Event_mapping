@@ -22,10 +22,10 @@ public class SplashScreen extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.splash_img);
 
-        Glide.with(this).asGif().load(R.raw.simg).placeholder(R.drawable.ic_launcher_background).into(imageView);
+        Glide.with(this).asGif().load(R.raw.splash).placeholder(R.drawable.ic_launcher_background).into(imageView);
 
         Objects.requireNonNull(getSupportActionBar()).hide();
-        int SPLASH_SCREEN_TIME_OUT = 2000;
+        int SPLASH_SCREEN_TIME_OUT = 4500;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
