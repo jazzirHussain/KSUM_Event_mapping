@@ -3,7 +3,6 @@ package com.example.ksumeventmapping;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SecondFragment extends Fragment {
 
@@ -33,8 +35,15 @@ public class SecondFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        CourseModal data =getActivity().getIntent().getParcelableExtra("eventData");
-        String src = convertToFormat(data.getRoom());
+        JSONObject data = null;
+        String src = null;
+        try {
+            data = new JSONObject(getActivity().getIntent().getStringExtra("eventData"));
+            src = convertToFormat(data.getString("venue"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         int markerId = getActivity().getResources().getIdentifier(src, "id", getActivity().getApplicationContext().getPackageName());
         ImageView i_but = (ImageView) view.findViewById(markerId);
         i_but.setVisibility(View.VISIBLE);
@@ -43,6 +52,7 @@ public class SecondFragment extends Fragment {
 
         int drawableId = getActivity().getResources().getIdentifier(src, "drawable", getActivity().getApplicationContext().getPackageName());
         img.setImageResource(drawableId);
+        JSONObject finalData = data;
         i_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,10 +72,15 @@ public class SecondFragment extends Fragment {
                     time = bottomSheetDialog.findViewById(R.id.textView4);
                     room = bottomSheetDialog.findViewById(R.id.textView5);
                     CharSequence c = "sdds";
-                    name.setText(data.getName());
-                    desc.setText(data.getDesc());
-                    time.setText(data.getTime());
-                    room.setText(data.getRoom());
+                    try {
+                        name.setText(finalData.getString("title"));
+                        desc.setText(finalData.getString("content"));
+                        time.setText(finalData.getString("date"));
+                        room.setText(finalData.getString("venue"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }else{
                     Toast toast=Toast.makeText(getActivity().getApplicationContext(),"Select an Event",Toast.LENGTH_SHORT);
                 }

@@ -1,6 +1,8 @@
 package com.example.ksumeventmapping;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
+public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> implements ItemClickListener{
 
     public JSONArray dates;
     private Context context;
     private LayoutInflater layoutInflater;
+    EventAdapter e;
 
     public EventsAdapter(JSONArray dates, Context context) {
         this.dates = dates;
@@ -33,10 +37,12 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         try {
-            holder.recyclerView.setAdapter(new EventAdapter(context, dates.getJSONObject(position).getJSONArray("events")));
+            e = new EventAdapter(context, dates.getJSONObject(position).getJSONArray("events"));
+            holder.recyclerView.setAdapter(e);
             holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
             holder.recyclerView.setHasFixedSize(true);
             holder.tvHeading.setText(dates.getJSONObject(position).getString("date"));
+            e.setClickListener(this);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -48,7 +54,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         return dates.length();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
         RecyclerView recyclerView;
         TextView tvHeading;
 
@@ -56,6 +62,16 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             super(itemView);
             recyclerView = (RecyclerView) itemView.findViewById(R.id.rvDates);
             tvHeading = (TextView) itemView.findViewById(R.id.tvDate);
+
         }
+
+
+    }
+    @Override
+    public void onClick(View view, JSONObject event) {
+        Intent intent = new Intent(context,MainActivity.class);
+        intent.putExtra("eventData",event.toString());
+        context.startActivity(intent);
+        ((Activity)context).finish();
     }
 }

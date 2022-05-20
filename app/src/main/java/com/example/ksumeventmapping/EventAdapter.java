@@ -19,6 +19,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.CustomViewHo
     private Context context;
     private JSONArray events;
     private LayoutInflater inflater;
+    private ItemClickListener clickListener;
 
     public EventAdapter(Context context, JSONArray events) {
         this.context = context;
@@ -49,15 +50,29 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.CustomViewHo
         return events.length();
     }
 
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.clickListener = itemClickListener;
+    }
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder {
+    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView ivChapter;
         public TextView note_title;
 
         public CustomViewHolder(View itemView) {
             super(itemView);
             note_title = (TextView) itemView.findViewById(R.id.note_title);
+            itemView.setOnClickListener(this);
 //            ivChapter = (ImageView) itemView.findViewById(R.id.ivChapter);
+        }
+        @Override
+        public void onClick(View view) {
+            if (clickListener != null) {
+                try {
+                    clickListener.onClick(view, events.getJSONObject(getAdapterPosition()));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

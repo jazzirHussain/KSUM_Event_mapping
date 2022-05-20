@@ -1,7 +1,6 @@
 package com.example.ksumeventmapping;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,9 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class FirstFragment extends Fragment {
     private static ImageView img1,img2;
@@ -33,12 +35,16 @@ public class FirstFragment extends Fragment {
         img2 = (ImageView) getView().findViewById(R.id.outsideImageView2);
         if(getActivity().getIntent().hasExtra("eventData")){
             MainActivity activity =  (MainActivity) getActivity();
-            CourseModal data = getActivity().getIntent().getParcelableExtra("eventData");
-            Log.d("building","data: "+data.getBuilding());
-            if(data.getBuilding() == 1){
-                img1.setVisibility(View.VISIBLE);
-            }else if(data.getBuilding() == 2){
-                img2.setVisibility(View.VISIBLE);
+            Building b = new Building();
+            try {
+                JSONObject data = new JSONObject(getActivity().getIntent().getStringExtra("eventData"));
+                if(b.getBuilding(data.getString("venue")) == 1){
+                    img1.setVisibility(View.VISIBLE);
+                }else if(b.getBuilding(data.getString("venue")) == 2){
+                    img2.setVisibility(View.VISIBLE);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
 
         }

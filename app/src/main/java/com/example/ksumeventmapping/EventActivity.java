@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class EventActivity extends AppCompatActivity {
+public class EventActivity extends AppCompatActivity{
     SearchView searchView;
     ListView listView;
     List<String> list;
@@ -141,4 +141,6 @@ public class EventActivity extends AppCompatActivity {
         }
         return "";
     }
+
+
 }
