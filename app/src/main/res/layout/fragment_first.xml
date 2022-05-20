@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/insideIamgeView"
-        android:layout_width="639dp"
-        android:layout_height="951dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:src="@drawable/sample"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,14 +33,13 @@
         android:layout_width="63dp"
         android:layout_height="63dp"
         android:src="@drawable/loc"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52"
-        android:visibility="invisible"
-        />
+        app:layout_constraintVertical_bias="0.401" />
 
     <ImageView
         android:id="@+id/outsideImageView2"
@@ -50,10 +49,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541"
+        app:layout_constraintVertical_bias="0.416"
 
         />
 
