@@ -19,6 +19,7 @@ public class EventActivity extends AppCompatActivity {
     ListView listView;
     List<String> list;
     ArrayAdapter<String > adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,9 @@ public class EventActivity extends AppCompatActivity {
         DataBaseHelper db = new DataBaseHelper(EventActivity.this);
         searchView = (SearchView) findViewById(R.id.searchView);
         listView = (ListView) findViewById(R.id.lv1);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         list = new ArrayList<String>();
         ArrayList<CourseModal> allEvents = db.getAllEventData();
         for(int i=0;i<allEvents.size();i++){
