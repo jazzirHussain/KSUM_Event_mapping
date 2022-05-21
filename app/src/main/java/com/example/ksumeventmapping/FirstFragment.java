@@ -5,14 +5,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class FirstFragment extends Fragment {
-    private static ImageView img1,img2;
+    GifImageView img1,img2;
     private int c;
     @Override
     public View onCreateView(
@@ -29,12 +32,15 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        img1 = (ImageView) getView().findViewById(R.id.outsideImageView1);
-        img2 = (ImageView) getView().findViewById(R.id.outsideImageView2);
+        img1 = (GifImageView) getView().findViewById(R.id.outsideImageView1);
+        img2 = (GifImageView) getView().findViewById(R.id.outsideImageView2);
+//        Button btn = (Button) getView().findViewById(R.id.fab);
+//        btn.setVisibility(View.GONE);
         if(getActivity().getIntent().hasExtra("eventData")){
             MainActivity activity =  (MainActivity) getActivity();
             CourseModal data = getActivity().getIntent().getParcelableExtra("eventData");
             Log.d("building","data: "+data.getBuilding());
+
             if(data.getBuilding() == 1){
                 img1.setVisibility(View.VISIBLE);
             }else if(data.getBuilding() == 2){

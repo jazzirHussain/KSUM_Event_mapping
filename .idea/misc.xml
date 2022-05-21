@@ -3,9 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/abhic/AndroidStudioProjects/KSUM_Event_mapping/KSUM_Event_mapping/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/abhic/AndroidStudioProjects/KSUM_Event_mapping/KSUM_Event_mapping/app/src/main/res/layout/fragment_first.xml" value="0.25" />
-        <entry key="..\:/Users/abhic/AndroidStudioProjects/KSUM_Event_mapping/KSUM_Event_mapping/app/src/main/res/layout/fragment_second.xml" value="0.25" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/drawable/rounded.xml" value="0.209" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/drawable/search_bg.xml" value="0.1915" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/layout/activity_bottomdialog.xml" value="0.2015625" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/layout/activity_bottompopup.xml" value="0.2015625" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/layout/activity_event.xml" value="0.2015625" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/layout/bottom_sheet.xml" value="0.2015625" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/layout/content_main.xml" value="0.26992753623188404" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/layout/fragment_first.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/layout/fragment_second.xml" value="0.25" />
       </map>
     </option>
   </component>

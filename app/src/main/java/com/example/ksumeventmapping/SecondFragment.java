@@ -16,6 +16,9 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import pl.droidsonroids.gif.GifImageButton;
+import pl.droidsonroids.gif.GifImageView;
+
 public class SecondFragment extends Fragment {
 
     ImageView imageView;
@@ -36,7 +39,7 @@ public class SecondFragment extends Fragment {
         CourseModal data =getActivity().getIntent().getParcelableExtra("eventData");
         String src = convertToFormat(data.getRoom());
         int markerId = getActivity().getResources().getIdentifier(src, "id", getActivity().getApplicationContext().getPackageName());
-        ImageView i_but = (ImageView) view.findViewById(markerId);
+        GifImageView i_but = (GifImageView) view.findViewById(markerId);
         i_but.setVisibility(View.VISIBLE);
         ImageView img;
         img = view.findViewById(R.id.fragMap);
