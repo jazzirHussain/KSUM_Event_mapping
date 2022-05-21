@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/drawable/bg_grad.xml" value="0.155" />
         <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/drawable/rounded.xml" value="0.209" />
+        <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/drawable/rounded_dialog.xml" value="0.155" />
         <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/drawable/search_bg.xml" value="0.1915" />
         <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/layout/activity_bottomdialog.xml" value="0.2015625" />
         <entry key="..\:/Users/mathe/AndroidStudioProjects/KSUM_Event_mapping/app/src/main/res/layout/activity_bottompopup.xml" value="0.2015625" />
