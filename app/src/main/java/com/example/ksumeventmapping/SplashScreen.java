@@ -25,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
         Glide.with(this).asGif().load(R.raw.simg).into(imageView);
 
         Objects.requireNonNull(getSupportActionBar()).hide();
-        int SPLASH_SCREEN_TIME_OUT = 4500;
+        int SPLASH_SCREEN_TIME_OUT = 2000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

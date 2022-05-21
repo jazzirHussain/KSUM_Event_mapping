@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -30,6 +31,14 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 openNewActivity(dbHelper);
             }
         });
+        ImageView menue = (ImageView) findViewById(R.id.menueItem);
+        menue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,MoreActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -43,7 +52,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 
@@ -64,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     public CourseModal getActivityData(){
         return data;
     }
+
 
 
 }
