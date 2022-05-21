@@ -22,14 +22,14 @@ public class SplashScreen extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.splash_img);
 
-        Glide.with(this).asGif().load(R.raw.splash).placeholder(R.drawable.ic_launcher_background).into(imageView);
+        Glide.with(this).asGif().load(R.raw.simg).into(imageView);
 
         Objects.requireNonNull(getSupportActionBar()).hide();
         int SPLASH_SCREEN_TIME_OUT = 4500;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i=new Intent(SplashScreen.this, EventActivity.class);
+                Intent i=new Intent(SplashScreen.this, EventActivity     .class);
                 //Intent is used to switch from one activity to another.
 
                 startActivity(i);

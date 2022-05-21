@@ -18,6 +18,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class SecondFragment extends Fragment {
 
     ImageView imageView;
@@ -39,13 +41,19 @@ public class SecondFragment extends Fragment {
         String src = null;
         try {
             data = new JSONObject(getActivity().getIntent().getStringExtra("eventData"));
-            src = convertToFormat(data.getString("venue"));
+
+            String venue = data.getString("building");
+            if(venue.equals("Flea Bazaar")||venue.equals("Food Fest")||venue.equals("Main Entrance")||venue.equals("Fab Hub")||venue.equals("Digital Hub")){
+                src = convertToFormat(data.getString("building"));
+            }else{
+                src = convertToFormat(data.getString("venue"));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        Log.i("src",src);
         int markerId = getActivity().getResources().getIdentifier(src, "id", getActivity().getApplicationContext().getPackageName());
-        ImageView i_but = (ImageView) view.findViewById(markerId);
+        GifImageView i_but = (GifImageView) view.findViewById(markerId);
         i_but.setVisibility(View.VISIBLE);
         ImageView img;
         img = view.findViewById(R.id.fragMap);
@@ -95,6 +103,7 @@ public class SecondFragment extends Fragment {
     }
     public String convertToFormat(String src){
         src = src.toLowerCase();
+        src = src.replaceAll("-","");
         src = src.replaceAll("\\s","_");
         Log.d("src: ",src);
         return src;

@@ -5,15 +5,16 @@
     android:id="@+id/coordinatorLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cream"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout3"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.KSUMEventMapping.AppBarOverlay"
-        app:layout_constraintBottom_toTopOf="parent"
+        android:background="@color/blue3"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,22 +24,61 @@
         layout="@layout/content_main"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#AEC6CF"
+        android:backgroundTint="#AEC6CF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="56dp"
+        android:backgroundTint="@color/blue3"
+        android:text="Select Event"
         app:layout_constraintBottom_toBottomOf="@+id/include3"
+        app:layout_constraintEnd_toEndOf="@+id/include3"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="61dp"
+        android:layout_height="54dp"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_search_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/more"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="79dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/include3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/kiw_logo_colour" />
+
+
+
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--        android:id="@+id/fab"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="bottom|end"-->
+    <!--        android:layout_margin="@dimen/fab_margin"-->
+    <!--        android:layout_marginEnd="16dp"-->
+    <!--        android:layout_marginBottom="16dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/include3"-->
+    <!--        app:layout_constraintEnd_toEndOf="@+id/include3"-->
+    <!--        app:srcCompat="@drawable/ic_baseline_search_24"-->
+    <!--        tools:ignore="SpeakableTextPresentCheck"-->
+    <!--        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
