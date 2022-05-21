@@ -1,10 +1,10 @@
 package com.example.ksumeventmapping;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,8 +13,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import pl.droidsonroids.gif.GifImageView;
+
 public class FirstFragment extends Fragment {
-    private static ImageView img1,img2;
+    private static GifImageView img1,img2;
     private int c;
     @Override
     public View onCreateView(
@@ -31,16 +33,24 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        img1 = (ImageView) getView().findViewById(R.id.outsideImageView1);
-        img2 = (ImageView) getView().findViewById(R.id.outsideImageView2);
+        img1 = (GifImageView) getView().findViewById(R.id.outsideImageView1);
+        img2 = (GifImageView) getView().findViewById(R.id.outsideImageView2);
+        Log.i("building","data: ;kjkl");
         if(getActivity().getIntent().hasExtra("eventData")){
+
             MainActivity activity =  (MainActivity) getActivity();
             Building b = new Building();
             try {
                 JSONObject data = new JSONObject(getActivity().getIntent().getStringExtra("eventData"));
-                if(b.getBuilding(data.getString("venue")) == 1){
+                String venue = data.getString("building");
+                if(venue.equals("Flea Bazaar")||venue.equals("Food Fest")||venue.equals("Main Entrance")||venue.equals("Fab Hub")){
+                    NavHostFragment.findNavController(FirstFragment.this)
+                            .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                }
+
+                if(venue.equals("Integrated Startup Complex")){
                     img1.setVisibility(View.VISIBLE);
-                }else if(b.getBuilding(data.getString("venue")) == 2){
+                }else if(venue.equals("Digital Hub")){
                     img2.setVisibility(View.VISIBLE);
                 }
             } catch (JSONException e) {
