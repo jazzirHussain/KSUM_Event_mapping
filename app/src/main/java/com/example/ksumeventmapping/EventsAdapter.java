@@ -38,10 +38,11 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         try {
             e = new EventAdapter(context, dates.getJSONObject(position).getJSONArray("events"));
+            String c ="Day "+(position+1);
             holder.recyclerView.setAdapter(e);
             holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
             holder.recyclerView.setHasFixedSize(true);
-            holder.tvHeading.setText(dates.getJSONObject(position).getString("date"));
+            holder.tvHeading.setText(c);
             e.setClickListener(this);
         } catch (JSONException e) {
             e.printStackTrace();

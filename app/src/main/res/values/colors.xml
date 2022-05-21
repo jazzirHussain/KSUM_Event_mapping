@@ -11,5 +11,9 @@
     <color name="blue1">#345DA7</color>
     <color name="blue2">#3B8AC4</color>
     <color name="blue3">#AEC6CF</color>
-    <color name="cream">#EFDBCB</color>
+    <color name="cream">#f7f7f7</color>
+    <color name="redFont">#9E133D</color>
+    <color name="blackFont">#393b3d</color>
+    <color name="bgGrey">#f7f7f7</color>
+
 </resources>

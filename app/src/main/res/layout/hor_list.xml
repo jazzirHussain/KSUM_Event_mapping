@@ -2,29 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:orientation="vertical" >
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:orientation="vertical"
+    android:background="@color/bgGrey"
+    >
 
     <LinearLayout
         android:orientation="vertical"
-        android:background="#FFFFFF"
+        android:background="@color/bgGrey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="15dp"
+        >
 
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:textSize="18sp"
-            android:textColor="#000000" />
+            android:textSize="23dp"
+            android:textColor="@color/blackFont"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDates"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
             />
 
     </LinearLayout>
