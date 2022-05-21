@@ -46,15 +46,14 @@
         tools:ignore="TextContrastCheck" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/menueItem"
         android:layout_width="61dp"
         android:layout_height="54dp"
-        android:clickable="true"
-        android:focusable="true"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/more"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:srcCompat="@drawable/ic_round_menu_24"
+      />
 
     <ImageView
         android:id="@+id/imageView2"
